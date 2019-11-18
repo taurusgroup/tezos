@@ -185,7 +185,7 @@ let on_request : type r. t -> r Request.t -> r tzresult Lwt.t =
                     ~forking_testchain
                   >>=? function
                   | None ->
-                      assert false (* should not happen *)
+                      State.Block.read chain_state hash
                   | Some block ->
                       return block) )
             >>= function
